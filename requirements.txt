@@ -1,0 +1,14 @@
+google-generativeai
+playwright
+ddgs
+pandas
+pydantic
+python-dotenv
+colorama
+# Dev dependencies
+pytest
+mypy
+types-requests
+black
+isort
+google-genai==1.47.0

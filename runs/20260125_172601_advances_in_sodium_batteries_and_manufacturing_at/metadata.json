@@ -1,0 +1,15 @@
+{
+  "topic": "Advances in sodium batteries and manufacturing at scale - implications for lithium and other battery types",
+  "timestamp": "20260125_172601",
+  "run_id": "20260125_172601_advances_in_sodium_batteries_and_manufacturing_at",
+  "model": "gemini-3-pro-preview",
+  "plan_subtasks_count": 4,
+  "scout_findings_count": 4,
+  "analyst_gold_count": 4,
+  "plan_detail": [
+    "Investigate recent academic and technical breakthroughs in sodium-ion chemistries, specifically focusing on cathode stability (layered oxides, Prussian blue) and anode efficiency (hard carbon).",
+    "Map the commercial landscape, identifying key companies scaling production, factory locations, and announced capacity targets.",
+    "Perform a comparative analysis of SIBs against incumbent technologies (Lithium-ion LFP/NMC) focusing on economics and performance metrics.",
+    "Analyze the implications for the wider battery market, specifically the impact on critical mineral demand (Lithium, Cobalt) and supply chain resilience."
+  ]
+}

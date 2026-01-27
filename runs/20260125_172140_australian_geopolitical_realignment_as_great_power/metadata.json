@@ -1,0 +1,15 @@
+{
+  "topic": "Australian geopolitical realignment as great power conflict increases",
+  "timestamp": "20260125_172140",
+  "run_id": "20260125_172140_australian_geopolitical_realignment_as_great_power",
+  "model": "gemini-3-flash-preview",
+  "plan_subtasks_count": 4,
+  "scout_findings_count": 7,
+  "analyst_gold_count": 7,
+  "plan_detail": [
+    "Analyze the shift in Australian defense strategy focusing on AUKUS and the 2023 Defence Strategic Review (DSR).",
+    "Examine economic statecraft and trade diversification efforts away from the Chinese market.",
+    "Evaluate Australia's regional diplomatic engagement with ASEAN and Pacific Island nations.",
+    "Assess domestic political and public opinion shifts regarding China and the US alliance."
+  ]
+}
