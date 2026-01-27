@@ -40,3 +40,4 @@ cookies.txt
 user_data_snapshot/
 config.yaml
 outputs/
+.DS_Store
