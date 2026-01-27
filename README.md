@@ -16,8 +16,8 @@ The Researcher Agent is an AI-powered tool designed to perform deep, parallelize
 
 1.  **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/researcher-agent.git
-    cd researcher-agent
+    git clone https://github.com/mpesce/research-agent.git
+    cd research-agent
     ```
 
 2.  **Set up Virtual Environment**:
