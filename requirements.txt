@@ -1,14 +1,13 @@
-google-generativeai
+google-genai==1.47.0
 playwright
 ddgs
-pandas
 pydantic
 python-dotenv
-colorama
+beautifulsoup4
+requests
 # Dev dependencies
 pytest
 mypy
 types-requests
 black
 isort
-google-genai==1.47.0
