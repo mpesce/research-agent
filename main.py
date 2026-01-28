@@ -18,9 +18,15 @@ import argparse
 async def main():
     parser = argparse.ArgumentParser(description="Run the Researcher Agent.")
     parser.add_argument("--topic", type=str, default="The Future of Synthetic Biology", help="Research topic to analyze.")
+    parser.add_argument("--open-limit", type=int, default=3, help="Number of results for Open Web Search.")
+    parser.add_argument("--deep-limit", type=int, default=1, help="Number of results per query for Deep Search.")
     args = parser.parse_args()
     
     topic = args.topic
+    if os.path.exists(topic) and os.path.isfile(topic):
+        print(f"Reading topic from file: {topic}")
+        with open(topic, "r", encoding="utf-8") as f:
+            topic = f.read().strip()
     
     print(f"=== Starting Researcher Agent for topic: {topic} ===\n")
 
@@ -33,7 +39,7 @@ async def main():
     findings = []
     
     # Initialize scouts
-    open_scout = OpenWebScout()
+    open_scout = OpenWebScout(num_results=args.open_limit)
     
     # Load profile path from environment
     profile_path = os.getenv("CHROME_PROFILE_PATH")
@@ -41,7 +47,7 @@ async def main():
         print("[Warning] CHROME_PROFILE_PATH not set in .env. Deep Scout will default to dummy/empty.")
         profile_path = "/tmp/dummy/path"
         
-    deep_scout = DeepSourceScout(source_profile_path=profile_path) 
+    deep_scout = DeepSourceScout(source_profile_path=profile_path, max_results=args.deep_limit) 
     
     tasks = []
     print("[Scouting]: Dispatching agents...")

@@ -72,7 +72,7 @@ class Synthesizer:
             2. Key Concepts (Definitions/Ontology)
             3. Deep Dive (Synthesis of the main themes)
             4. Contrarian Views (If any found)
-            5. References
+            5. References (Format each reference as: [Page Title](URL))
             
             Research Findings:
             {findings_text}

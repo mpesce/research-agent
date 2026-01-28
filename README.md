@@ -48,6 +48,20 @@ Run the agent with a topic:
 PYTHONPATH=src python main.py --topic "The future of domestic electrification in Australia"
 ```
 
+You can also control the depth of research:
+
+```bash
+PYTHONPATH=src python main.py \
+  --topic "The future of domestic electrification in Australia" \
+  --open-limit 5 \
+  --deep-limit 2
+```
+
+**Advanced Usage:**
+- Provide a file path as the topic to read from a markdown/text file: `--topic my_research_brief.md`
+- `--open-limit`: Number of results to fetch per query from open web (default: 3).
+- `--deep-limit`: Number of results to fetch per query for deep analysis (default: 1).
+
 ### Output
 
 The agent generates two types of output:

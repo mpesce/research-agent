@@ -16,12 +16,14 @@ from researcher.scout import BaseScout
 class DeepSourceScout(BaseScout):
     """Scout that uses a cloned browser profile to access authenticated content."""
 
-    def __init__(self, source_profile_path: str):
+    def __init__(self, source_profile_path: str, max_results: int = 1):
         """
         Args:
             source_profile_path: Absolute path to the user's browser profile directory.
+            max_results: Number of results to process per query.
         """
         self.source_profile_path = source_profile_path
+        self.max_results = max_results
         self.temp_dir = tempfile.mkdtemp(prefix="researcher_agent_profile_")
         self._snapshot_lock = asyncio.Lock()
         self._snapshot_created = False
@@ -89,28 +91,25 @@ class DeepSourceScout(BaseScout):
                         print(f"  - Researching: {query} (waiting {delay:.1f}s)...")
                         await asyncio.sleep(delay)
 
-                        target_url = None
-                        
-                        # 1. DISCOVERY: Find the URL using DuckDuckGo Search API (Library)
+                        # 1. DISCOVERY
+                        target_urls = []
                         if query.startswith("http"):
-                             target_url = query
+                             target_urls = [query]
                         else:
                             try:
-                                print(f"    Discovery: Searching DDG API for best URL...")
-                                # Use DDGS purely for discovery. 
-                                # It returns a list of dicts: {'title':..., 'href':..., 'body':...}
-                                results = await asyncio.to_thread(lambda: list(DDGS().text(query, max_results=1)))
+                                print(f"    Discovery: Searching DDG API for best URL(s)...")
+                                results = await asyncio.to_thread(lambda: list(DDGS().text(query, max_results=self.max_results)))
                                 
                                 if results:
-                                    target_url = results[0]['href']
-                                    print(f"    Found URL: {target_url}")
+                                    target_urls = [r['href'] for r in results]
+                                    print(f"    Found {len(target_urls)} URLs: {target_urls}")
                                 else:
                                     print("    No results found via DDGS.")
                             except Exception as e:
                                 print(f"    Discovery failed: {e}")
                         
-                        # 2. ACCESS: Visit the URL
-                        if target_url:
+                        # 2. ACCESS: Visit the URLs
+                        for target_url in target_urls:
                             try:
                                 await page.goto(target_url, timeout=20000)
                                 await page.wait_for_load_state("domcontentloaded")
