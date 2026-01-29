@@ -23,7 +23,8 @@ The Researcher Agent is an AI-powered tool designed to perform deep, parallelize
 2.  **Set up Virtual Environment**:
     ```bash
     python -m venv .venv
-    source .venv/bin/activate
+    source .venv/bin/activate  # Mac/Linux
+    # .venv\Scripts\activate   # Windows
     ```
 
 3.  **Install Dependencies**:
@@ -45,16 +46,24 @@ The Researcher Agent is an AI-powered tool designed to perform deep, parallelize
 Run the agent with a topic:
 
 ```bash
+# Mac/Linux
 PYTHONPATH=src python main.py --topic "The future of domestic electrification in Australia"
+
+# Windows (PowerShell)
+$env:PYTHONPATH='src'; python main.py --topic "The future of domestic electrification in Australia"
 ```
 
 You can also control the depth of research:
 
 ```bash
+# Mac/Linux
 PYTHONPATH=src python main.py \
   --topic "The future of domestic electrification in Australia" \
   --open-limit 5 \
   --deep-limit 2
+
+# Windows (PowerShell)
+$env:PYTHONPATH='src'; python main.py --topic "The future of domestic electrification in Australia" --open-limit 5 --deep-limit 2
 ```
 
 **Advanced Usage:**
